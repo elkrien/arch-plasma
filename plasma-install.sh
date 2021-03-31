@@ -5,11 +5,9 @@
 # License: GNU GPLv3
 #
 
-
 ##### FUNCTIONS #####
 
 # Pacman Installation function
-
 func_install_pacman() {
 	if pacman -Qi $1 &> /dev/null; then
 		tput setaf 2
@@ -24,9 +22,7 @@ func_install_pacman() {
     	fi
 }
 
-
 # AUR installation function (from AUR)
-
 func_install_aur() {
 	if paru -Qi $1 &> /dev/null; then
 		tput setaf 2
@@ -42,7 +38,6 @@ func_install_aur() {
 }
 
 # Installation of AUR helper (paru)
-
 aurhelperinstallation() {
 	cd /tmp
 	sudo rm -rf /tmp/paru*
@@ -52,19 +47,14 @@ aurhelperinstallation() {
 	cd /tmp
 }
 
-
-
 ##### LIST OF PACKAGES #####
 
 # Pacman list
-
 list_pacman=(
-base-devel					# developer tools group
 git							# the fast distributed version control system
 xorg						# Xorg group - display server
 plasma						# KDE Plasma group
 sddm						# QML based X11 and Wayland display manager
-plasma-wayland-session		# Plasma Wayland session
 dolphin						# KDE File Manager
 dolphin-plugins				# extra Dolphin plugins
 dragon						# a multimedia player where the focus is on simplicity, instead of features
@@ -161,9 +151,7 @@ tlp							# Linux Advanced Power Management
 # blueberry					# Bluetooth configuration tool
 )
 
-
 # AUR list
-
 list_aur=(
 bitwarden-bin				# a secure and free password manager for all of your devices
 teams						# a Microsoft Teams for Linux
@@ -177,10 +165,8 @@ spotify						# a proprietary music streaming service
 typora						# MD editor
 zoxide-bin					# cd replacement
 starship-bin				# the cross-shell prompt for astronauts
-#ant-dracula-gtk-theme		# Ant Dracula Theme for GTK 3.x
 kora-icon-theme				# icon theme suitable for every desktop environment (dark and light versions, HiDPI support)
 bibata-cursor-theme-bin		# mouse cursor theme
-tela-icon-theme				# a flat colorful icon theme
 ttf-ms-fonts				# core TTF fonts from Microsoft"
 visual-studio-code-bin		# official binary version of Visual Studio Code (vscode)
 )
@@ -189,57 +175,61 @@ visual-studio-code-bin		# official binary version of Visual Studio Code (vscode)
 ##### MAIN SCRIPT #####
 
 # Welcome message
-
 clear
-tput setaf 3
+tput setaf 5
 echo
 echo "###############################################################################"
 echo
-echo " 			INSTALLATION OF PLASMA DESKTOP AND APPLICATIONS"
+echo " 	       INSTALLATION OF PLASMA DESKTOP AND APPLICATIONS"
 echo 
 echo "###############################################################################"
 echo
+echo
 tput sgr0
-
 
 # Setting fastest mirrors
-
 tput setaf 3
 echo
-echo "### Finding fastest mirrors"
+echo "### Finding fastest mirrors - please wait..."
 tput sgr0
-sudo reflector -c Poland,Germany -a 12 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector -c Poland -a 12 --sort rate --save /etc/pacman.d/mirrorlist
 
+# installation of needed dependancies
+tput setaf 3
+echo
+echo "### Installation packages needed to run rest of the script..."
+tput sgr0
+sudo pacman -S --noconfirm --needed base-devel
+
+# make pacman and paru colorful
+grep -q "^Color" /etc/pacman.conf || sudo sed -i "s/^#Color$/Color/" /etc/pacman.conf						
+grep -q "ILoveCandy" /etc/pacman.conf || sudo sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
 
 # Installation of AUR helper
-
 tput setaf 3
 echo
-echo "### Installation of AUR helper"
+echo "### Installation of AUR helper..."
 tput sgr0
 aurhelperinstallation
 
-
 # Installation of packages
-
 count=0
 
 for name in "${list_pacman[@]}" ; do
 	count=$[count+1]
-	tput setaf 3;echo "### Installation of package number "$count " " $name;tput sgr0;
+	tput setaf 3;echo "### Installation of package:  "$name;tput sgr0;
 	func_install_pacman $name
 	echo
 done
 
 for name in "${list_aur[@]}" ; do
 	count=$[count+1]
-	tput setaf 3;echo "### Installation of package number "$count " " $name;tput sgr0;
+	tput setaf 3;echo "### Installation of package:  "$name;tput sgr0;
 	func_install_aur $name
 	echo
 done
 
-# services activation
-
+# services activation and some system settings
 tput setaf 5;echo
 echo
 echo "###############################################################################"
@@ -261,14 +251,11 @@ sudo touch /etc/sysctl.d/99-swappiness.conf 																	# set swappiness pa
 sudo bash -c 'echo "vm.swappiness=10" >> /etc/sysctl.d/99-swappiness.conf' 										# set swappiness part 2
 sudo sed -i 's/^# --country France,Germany/--country Poland,Germany/' /etc/xdg/reflector/reflector.conf 		# reflector setting
 sudo systemctl enable reflector.timer 																			# enabling reflector timer
-grep -q "^Color" /etc/pacman.conf || sudo sed -i "s/^#Color$/Color/" /etc/pacman.conf							# make pacman and paru colorful - part 1
-grep -q "ILoveCandy" /etc/pacman.conf || sudo sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf			# make pacman and paru colorful - part 2
 echo /usr/local/bin/fish | sudo tee -a /etc/shells 																# change shell to fish - part 1
-sudo chsh -s /bin/fish																							# change shell to fish - part 2
+chsh -s /bin/fish																								# change shell to fish - part 2
 
-# End information
-
-tput setaf 11;
+# Finish information
+tput setaf 5
 echo
 echo "###############################################################################"
 echo
