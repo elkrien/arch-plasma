@@ -278,4 +278,3 @@ echo " 		    restart computer and start to rice Your new system :)"
 echo
 echo "###############################################################################"
 echo;tput sgr0
-
