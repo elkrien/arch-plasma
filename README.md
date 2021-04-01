@@ -1,7 +1,7 @@
-# INSTALACJA ARCH na IDEAPAD 100S-14IBR
+# INSTALACJA ARCH + PLASMA na IDEAPAD 100S-14IBR
 
 
-Poniżej znajduje się instrukcja instalacji czystego Linux Arch na komputerze Lenovo Ideapad 100S-14IBR. Wykonuj komendy po kolei zgodne z poniższymi wskazówkami oraz opisem.
+Poniżej znajduje się instrukcja instalacji czystego Linux Arch + środowiska graficznego KDE Plasma oraz używanego przeze mnie oprogramowania na komputerze Lenovo Ideapad 100S-14IBR. Wykonuj komendy po kolei zgodne z poniższymi wskazówkami oraz opisem. Poniższą instrukcję oraz skrypt można bardzo łątwo dostosować do instalacji na dowolnym komputerze.
 
 1. Ściągnij i nagraj na Pendrive ISO z systemem Linux Arch (np. używające Balena Etcher) - [https://archlinux.org/](https://archlinux.org/download/)
 
