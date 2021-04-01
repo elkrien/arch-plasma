@@ -14,7 +14,7 @@ Poniżej znajduje się instrukcja instalacji czystego Linux Arch + środowiska g
    setfont Lat2-Terminus16.psfu.gz -m 8859-2
    ```
    
-4. Podłącz się do sieci (słowo *haslodowifi* zastąp prawdziwym hasłem:
+4. Podłącz się do sieci (słowo *haslodowifi* zastąp prawdziwym hasłem):
 
    ```sh
    bash
