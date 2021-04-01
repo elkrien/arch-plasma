@@ -120,6 +120,7 @@ awesome-terminal-fonts		# fonts/icons for powerlines
 calibre						# ebook management application
 simplescreenrecorder		# a feature-rich screen recorder that supports X11 and OpenGL
 kitty						# a modern, hackable, featureful, OpenGL-based terminal emulator
+starship				# the cross-shell prompt for astronauts
 alacritty					# a cross-platform, GPU-accelerated terminal emulator
 htop						# interactive process viewer
 neofetch					# a CLI system information tool written in BASH that supports displaying images
@@ -169,7 +170,6 @@ pamac-aur					# a Gtk3 frontend, Package Manager based on libalpm with AUR and A
 spotify						# a proprietary music streaming service
 typora						# MD editor
 zoxide-bin					# cd replacement
-starship-bin				# the cross-shell prompt for astronauts
 kora-icon-theme				# icon theme suitable for every desktop environment (dark and light versions, HiDPI support)
 bibata-cursor-theme-bin		# mouse cursor theme
 ttf-ms-fonts				# core TTF fonts from Microsoft"
