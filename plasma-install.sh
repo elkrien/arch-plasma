@@ -52,7 +52,8 @@ aurhelperinstallation() {
 # Pacman list
 list_pacman=(
 git							# the fast distributed version control system
-xorg						# Xorg group - display server
+xorg						# X.org group - display server
+xf86-video-intel			# X.org Intel i810/i830/i915/945G/G965+ video drivers
 plasma						# KDE Plasma group
 sddm						# QML based X11 and Wayland display manager
 dolphin						# KDE File Manager
@@ -92,8 +93,7 @@ gst-plugins-base			# multimedia graph framework - base plugins
 gst-plugins-good			# multimedia graph framework - good plugins
 gst-plugins-ugly			# multimedia graph framework - ugly plugins
 krita						# edit and paint images
-ark							# archiving tool
-latte-dock 					# a dock based on Plasma Frameworks
+ark							# archiving tool	
 reflector					# a module and script to retrieve and filter the latest Pacman mirror list
 xdg-user-dirs-gtk			# creates user dirs and asks to relocalize them
 pulseaudio					# a featureful, general-purpose sound server
@@ -120,6 +120,7 @@ awesome-terminal-fonts		# fonts/icons for powerlines
 calibre						# ebook management application
 simplescreenrecorder		# a feature-rich screen recorder that supports X11 and OpenGL
 kitty						# a modern, hackable, featureful, OpenGL-based terminal emulator
+alacritty					# a cross-platform, GPU-accelerated terminal emulator
 htop						# interactive process viewer
 neofetch					# a CLI system information tool written in BASH that supports displaying images
 grub-customizer				# a graphical grub2 settings manager
@@ -144,11 +145,15 @@ simplenote-electron-bin		# the simplest way to keep notes
 ytop-bin					# a TUI system monitor written in Rust
 bpytop						# a resource monitor that shows usage and stats for processor, memory, disks, network and processes
 tlp							# Linux Advanced Power Management
-# pulseaudio-bluetooth 		# Bluetooth support for PulseAudio
-# bluez 					# daemons for the bluetooth protocol stack
-# bluez-libs 				# deprecated libraries for the bluetooth protocol stack
-# bluez-utils 				# Development and debugging utilities for the bluetooth protocol stack
-# blueberry					# Bluetooth configuration tool
+kvantum-qt5					# SVG-based theme engine for Qt5 (including config tool and extra themes)
+plank						# elegant, simple, clean dock
+#clamav						# Anti-virus toolkit for Unix
+#clamtk						# easy to use, light-weight, on-demand virus scanner for Linux systems - GUI for ClamAV
+#pulseaudio-bluetooth 		# Bluetooth support for PulseAudio
+#bluez 						# daemons for the bluetooth protocol stack
+#bluez-libs 				# deprecated libraries for the bluetooth protocol stack
+#bluez-utils 				# Development and debugging utilities for the bluetooth protocol stack
+#blueberry					# Bluetooth configuration tool
 )
 
 # AUR list
@@ -169,6 +174,8 @@ kora-icon-theme				# icon theme suitable for every desktop environment (dark and
 bibata-cursor-theme-bin		# mouse cursor theme
 ttf-ms-fonts				# core TTF fonts from Microsoft"
 visual-studio-code-bin		# official binary version of Visual Studio Code (vscode)
+dracula-grub-theme-git		# Dracula theme for GRUB
+
 )
 
 
@@ -194,12 +201,12 @@ echo "### Finding fastest mirrors - please wait..."
 tput sgr0
 sudo reflector -c Poland -a 12 --sort rate --save /etc/pacman.d/mirrorlist
 
-# installation of needed dependancies
+# installation of needed tools
 tput setaf 3
 echo
 echo "### Installation packages needed to run rest of the script..."
 tput sgr0
-sudo pacman -S --noconfirm --needed base-devel
+sudo pacman -S --noconfirm --needed base-devel git
 
 # make pacman and paru colorful
 grep -q "^Color" /etc/pacman.conf || sudo sed -i "s/^#Color$/Color/" /etc/pacman.conf						
@@ -249,10 +256,14 @@ sudo systemctl enable fstrim.timer 																				# fstrim (sdd)
 #sudo sed -i 's/'#AutoEnable=false'/'AutoEnable=true'/g' /etc/bluetooth/main.conf								# bluetooth settings
 sudo touch /etc/sysctl.d/99-swappiness.conf 																	# set swappiness part 1
 sudo bash -c 'echo "vm.swappiness=10" >> /etc/sysctl.d/99-swappiness.conf' 										# set swappiness part 2
-sudo sed -i 's/^# --country France,Germany/--country Poland,Germany/' /etc/xdg/reflector/reflector.conf 		# reflector setting
+sudo sed -i 's/^# --country France,Germany/--country Poland/' /etc/xdg/reflector/reflector.conf 				# reflector setting
 sudo systemctl enable reflector.timer 																			# enabling reflector timer
 echo /usr/local/bin/fish | sudo tee -a /etc/shells 																# change shell to fish - part 1
 chsh -s /bin/fish																								# change shell to fish - part 2
+#sudo systemctl enable sshd.service																				# enable OpenSSH daemon - for SSH server
+#sudo freshclam																									# update ClamAV signatures
+#sudo systemctl enable clamav-freshclam.service																	# enable ClamAV services
+#sudo systemctl enable clamav-daemon.service																	# enable ClamAV services
 
 # Finish information
 tput setaf 5
