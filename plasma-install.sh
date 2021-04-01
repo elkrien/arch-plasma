@@ -175,7 +175,6 @@ bibata-cursor-theme-bin		# mouse cursor theme
 ttf-ms-fonts				# core TTF fonts from Microsoft"
 visual-studio-code-bin		# official binary version of Visual Studio Code (vscode)
 dracula-grub-theme-git		# Dracula theme for GRUB
-
 )
 
 
