@@ -106,7 +106,6 @@ alsa-utils					# ALSA utilities
 playerctl					# mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others
 libcups						# client libraries and headers for CUPS
 nss-mdns					# glibc plugin providing host name resolution via mDNS (for wireless printer)
-epson-inkjet-printer-escpr	# Epson printers drivers
 avahi						# Service Discovery for Linux using mDNS/DNS-SD (for wireless printer)
 openssh						# premier connectivity tool for remote login with the SSH protocol
 ttf-roboto					# Google's signature family of fonts
@@ -120,7 +119,7 @@ awesome-terminal-fonts		# fonts/icons for powerlines
 calibre						# ebook management application
 simplescreenrecorder		# a feature-rich screen recorder that supports X11 and OpenGL
 kitty						# a modern, hackable, featureful, OpenGL-based terminal emulator
-starship				# the cross-shell prompt for astronauts
+starship					# the cross-shell prompt for astronauts
 alacritty					# a cross-platform, GPU-accelerated terminal emulator
 htop						# interactive process viewer
 neofetch					# a CLI system information tool written in BASH that supports displaying images
@@ -142,8 +141,6 @@ lolcat						# a command line tool to output rainbow of colors in Terminal
 signal-desktop				# Signal Private Messenger for Linux
 fd							# a simple, fast and user-friendly alternative to find
 imagescan 					# EPSON Image Scan v3 front-end for scanners and all-in-ones
-simplenote-electron-bin		# the simplest way to keep notes
-ytop-bin					# a TUI system monitor written in Rust
 bpytop						# a resource monitor that shows usage and stats for processor, memory, disks, network and processes
 tlp							# Linux Advanced Power Management
 kvantum-qt5					# SVG-based theme engine for Qt5 (including config tool and extra themes)
@@ -175,6 +172,9 @@ bibata-cursor-theme-bin		# mouse cursor theme
 ttf-ms-fonts				# core TTF fonts from Microsoft"
 visual-studio-code-bin		# official binary version of Visual Studio Code (vscode)
 dracula-grub-theme-git		# Dracula theme for GRUB
+epson-inkjet-printer-escpr	# Epson printers drivers
+simplenote-electron-bin		# the simplest way to keep notes
+ytop-bin					# a TUI system monitor written in Rust
 )
 
 
@@ -198,6 +198,7 @@ tput setaf 3
 echo
 echo "### Finding fastest mirrors - please wait..."
 tput sgr0
+sudo pacman -S --needed --noconfirm reflector
 sudo reflector -c Poland -a 12 --sort rate --save /etc/pacman.d/mirrorlist
 
 # installation of needed tools
