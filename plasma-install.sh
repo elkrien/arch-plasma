@@ -127,6 +127,7 @@ grub-customizer				# a graphical grub2 settings manager
 fish						# smart and user friendly shell intended mostly for interactive use
 libreoffice-fresh			# LibreOffice branch which contains new features and program enhancements
 libreoffice-fresh-pl		# Polish language pack for LibreOffice Fresh
+hunspell-pl					# Polish dictionary for Hunspell
 gufw						# uncomplicated way to manage your Linux firewall
 discord						# all-in-one voice and text chat for gamers that's free and secure
 intel-ucode					# Microcode update files for Intel CPUs
