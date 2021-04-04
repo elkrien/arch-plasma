@@ -146,6 +146,8 @@ bpytop						# a resource monitor that shows usage and stats for processor, memor
 tlp							# Linux Advanced Power Management
 kvantum-qt5					# SVG-based theme engine for Qt5 (including config tool and extra themes)
 plank						# elegant, simple, clean dock
+qtkeychain-qt5				# provides support for secure credentials storage
+gnome-keyring				# stores passwords and encryption keys
 #clamav						# Anti-virus toolkit for Unix
 #clamtk						# easy to use, light-weight, on-demand virus scanner for Linux systems - GUI for ClamAV
 #pulseaudio-bluetooth 		# Bluetooth support for PulseAudio
