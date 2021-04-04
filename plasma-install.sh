@@ -144,7 +144,7 @@ fd							# a simple, fast and user-friendly alternative to find
 imagescan 					# EPSON Image Scan v3 front-end for scanners and all-in-ones
 bpytop						# a resource monitor that shows usage and stats for processor, memory, disks, network and processes
 tlp							# Linux Advanced Power Management
-kvantum-qt5					# SVG-based theme engine for Qt5 (including config tool and extra themes)
+# kvantum-qt5				# SVG-based theme engine for Qt5 (including config tool and extra themes)
 plank						# elegant, simple, clean dock
 qtkeychain-qt5				# provides support for secure credentials storage
 gnome-keyring				# stores passwords and encryption keys
