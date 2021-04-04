@@ -148,6 +148,7 @@ tlp							# Linux Advanced Power Management
 plank						# elegant, simple, clean dock
 qtkeychain-qt5				# provides support for secure credentials storage
 gnome-keyring				# stores passwords and encryption keys
+papirus-icon-theme			# Papirus Icon Theme
 #clamav						# Anti-virus toolkit for Unix
 #clamtk						# easy to use, light-weight, on-demand virus scanner for Linux systems - GUI for ClamAV
 #pulseaudio-bluetooth 		# Bluetooth support for PulseAudio
@@ -171,6 +172,7 @@ spotify						# a proprietary music streaming service
 typora						# MD editor
 zoxide-bin					# cd replacement
 kora-icon-theme				# icon theme suitable for every desktop environment (dark and light versions, HiDPI support)
+papirus-folders				# Allows to change the color of folders
 bibata-cursor-theme-bin		# mouse cursor theme
 ttf-ms-fonts				# core TTF fonts from Microsoft"
 visual-studio-code-bin		# official binary version of Visual Studio Code (vscode)
@@ -263,6 +265,7 @@ sudo sed -i 's/^# --country France,Germany/--country Poland/' /etc/xdg/reflector
 sudo systemctl enable reflector.timer 																			# enabling reflector timer
 echo /usr/local/bin/fish | sudo tee -a /etc/shells 																# change shell to fish - part 1
 chsh -s /bin/fish																								# change shell to fish - part 2
+papirus-folders -C violet --theme Papirus-Dark																	# change folders colors for Papirus Icon Theme
 #sudo systemctl enable sshd.service																				# enable OpenSSH daemon - for SSH server
 #sudo freshclam																									# update ClamAV signatures
 #sudo systemctl enable clamav-freshclam.service																	# enable ClamAV services
