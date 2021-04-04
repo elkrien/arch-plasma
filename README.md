@@ -126,5 +126,6 @@ Poniżej znajduje się instrukcja instalacji czystego Linux Arch + środowiska g
 
     ```sh
     curl -LO https://raw.githubusercontent.com/elkrien/arch-plasma/main/plasma-install.sh
+    chmod +x plasma-install.sh
     ./plasma-install.sh
     ```
