@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+e#!/usr/bin/env bash
 #
 # Plasma Desktop and Packages installation on fresh Arch Linux
 # by MM <elkrien@gmail.com>
@@ -144,7 +144,7 @@ fd							# a simple, fast and user-friendly alternative to find
 imagescan 					# EPSON Image Scan v3 front-end for scanners and all-in-ones
 bpytop						# a resource monitor that shows usage and stats for processor, memory, disks, network and processes
 tlp							# Linux Advanced Power Management
-# kvantum-qt5				# SVG-based theme engine for Qt5 (including config tool and extra themes)
+#kvantum-qt5				# SVG-based theme engine for Qt5 (including config tool and extra themes)
 plank						# elegant, simple, clean dock
 qtkeychain-qt5				# provides support for secure credentials storage
 gnome-keyring				# stores passwords and encryption keys
@@ -213,9 +213,10 @@ echo "### Installation packages needed to run rest of the script..."
 tput sgr0
 sudo pacman -S --noconfirm --needed base-devel git
 
-# make pacman and paru colorful
-grep -q "^Color" /etc/pacman.conf || sudo sed -i "s/^#Color$/Color/" /etc/pacman.conf						
+# make pacman and paru colorful and enable parallel downloads
 grep -q "ILoveCandy" /etc/pacman.conf || sudo sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
+grep -q "^Color" /etc/pacman.conf || sudo sed -i "s/^#Color$/Color/" /etc/pacman.conf
+grep -q "^ParallelDownloads" /etc/pacman.conf || sudo sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 5/" /etc/pacman.conf
 
 # Installation of AUR helper
 tput setaf 3
